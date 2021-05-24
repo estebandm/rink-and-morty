@@ -8,7 +8,9 @@ import Container from 'components/core/Container'
 import useNearScreen from 'hooks/useNearScreen'
 
 export const Card = ({ characters }) => {
-  const { handleNextPage, loading, setPages, pages } = useContext(CharactersContext)
+  const { getNextPage, loading, loadingNextPage } = useContext(
+    CharactersContext
+  )
 
   const [show, setShow] = useState(false)
 
@@ -18,29 +20,33 @@ export const Card = ({ characters }) => {
     setShow(true)
   }
 
-  const debounceHandleNextPage = useCallback((
-    debounce(() => setPages({ ...pages, currentPage: pages.currentPage + 1 }), 200)
-  ), [setPages])
+  const debounceHandleNextPage = useCallback(debounce(getNextPage, 200), [
+    getNextPage
+  ])
 
   useEffect(() => {
-    if (isNearScreen) debounceHandleNextPage()// navegar a la siguiente pagina
+    if (isNearScreen && !loadingNextPage) debounceHandleNextPage()// navegar a la siguiente pagina
   }, [isNearScreen, debounceHandleNextPage])
 
   return (
     <>
-      <Container breakPoint='md'>
+      <Container breakPoint="md">
         <main>
           {loading
-            ? <div>Cargando...</div>
-            : characters.map(character => (
-              <section key={character.id}>
-                <div className='border'>
-                  <img alt='character' onLoad={onLoad} src={character.image}/>
-                </div>
-              </section>
-            ))
-          }
+            ? (
+              <div>Cargando...</div>
+            )
+            : (
+              characters.map(character => (
+                <section key={character.id}>
+                  <div className="border">
+                    <img alt="character" onLoad={onLoad} src={character.image} />
+                  </div>
+                </section>
+              ))
+            )}
         </main>
+        {loadingNextPage && <div style={{ minHeight: '15px' }}>Cargando mas personajes...</div>}
         <div ref={viewfinderRef}></div>
       </Container>
     </>

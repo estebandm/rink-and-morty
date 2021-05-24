@@ -8,7 +8,7 @@ import Container from 'components/core/Container'
 import useNearScreen from 'hooks/useNearScreen'
 
 export const Card = ({ characters }) => {
-  const { handleNextPage, loading, setPages, pages } = useContext(CharactersContext)
+  const { loading, setPages, pages } = useContext(CharactersContext)
 
   const [show, setShow] = useState(false)
 
@@ -18,9 +18,13 @@ export const Card = ({ characters }) => {
     setShow(true)
   }
 
-  const debounceHandleNextPage = useCallback((
-    debounce(() => setPages({ ...pages, currentPage: pages.currentPage + 1 }), 200)
-  ), [setPages])
+  const handleNextPage = () => {
+    setPages({ ...pages, currentPage: pages.currentPage + 1 })
+  }
+
+  const debounceHandleNextPage = useCallback(
+    debounce(handleNextPage, 200),
+    [])
 
   useEffect(() => {
     if (isNearScreen) debounceHandleNextPage()// navegar a la siguiente pagina
@@ -29,13 +33,17 @@ export const Card = ({ characters }) => {
   return (
     <>
       <Container breakPoint='md'>
-        <main>
+        <main className='card-main'>
           {loading
             ? <div>Cargando...</div>
             : characters.map(character => (
-              <section key={character.id}>
-                <div className='border'>
-                  <img alt='character' onLoad={onLoad} src={character.image}/>
+              <section className='card-section' key={character.id}>
+                <div className='card-border'>
+                  <img
+                    alt='character'
+                    className='card-img'
+                    onLoad={onLoad}
+                    src={character.image}/>
                 </div>
               </section>
             ))

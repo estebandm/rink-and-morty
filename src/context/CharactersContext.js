@@ -1,4 +1,4 @@
-import React, { createContext, useState, useCallback } from 'react'
+import React, { createContext, useState } from 'react'
 
 export const Context = createContext()
 
@@ -7,7 +7,6 @@ const initialState = {
   nextPageUrl: null,
   prevPageUrl: null
 }
-
 const Provider = ({ children }) => {
   const [characters, setCharacters] = useState([])
   const [pages, setPages] = useState(initialState)

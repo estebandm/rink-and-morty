@@ -1,21 +1,21 @@
-main{
+.card-main{
     display: grid;
     grid-gap: 24px;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     min-height: 200vh;
 }
-section{
+.card-section{
     display: flex;
     max-height: 350px;
 }
-.border{
+.card-border{
     border-radius: 8px;
     border: 2px solid var(--app-border-color);
     box-shadow: 14px 14px var(--app-box-shadow-color);
     cursor: pointer;
     padding: 0
 }
-img{
+.card-img{
     width: 100%;
     height: 100%;
     border-radius: 8px;

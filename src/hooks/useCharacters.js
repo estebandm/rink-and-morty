@@ -18,7 +18,6 @@ export const useCharacters = () => {
     setLoading(true)
     const res = await fetch('https://rickandmortyapi.com/api/character?')
     const data = await res.json()
-    console.log(data)
     const nextPageUrl = data.info.next
     const prevPageUrl = data.info.prev
     setCharacters(data.results)
@@ -31,7 +30,7 @@ export const useCharacters = () => {
   }, [])
 
   const getNextPage = useCallback(async () => {
-    console.log(pages)
+    console.log(pages.nextPageUrl)
     /*  setLoadingNextPage(true)
     const res = await fetch(pages.nextPageUrl)
     const data = await res.json()
@@ -55,7 +54,7 @@ export const useCharacters = () => {
     if (pages.currentPage === 0) return
     if (!pages.nextPageUrl) return
     getNextPage()
-  }, [pages.currentPage])
+  }, [])
 
   return {
     characters,

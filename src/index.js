@@ -4,11 +4,14 @@ import Routes from 'routes'
 
 import 'index.css'
 import CharactersContext from 'context/CharactersContext'
+import Header from 'components/AppLayout/Header'
 
 ReactDOM.render(
   <React.StrictMode>
     <CharactersContext.Provider>
-      <Routes />
+      <Header>
+        <Routes />
+      </Header>
     </CharactersContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -1,0 +1,50 @@
+.switch-label{
+    width: 100px;
+    height: 30px;
+    display: flex;
+    border-radius: 50px;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.switch-label--light{
+    border: 2px solid var(--app-border-color);
+    box-shadow: 4px 4px var(--app-box-shadow-color);
+}
+
+.switch-label--dark{
+    border: 2px solid var(--app-border-color-dark);
+    box-shadow: 4px 4px var(--app-box-shadow-color-dark);
+}
+
+.sliding-color{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--blue);
+    border-radius: 50px 0 0 50px;
+}
+
+.moon, .sun{
+    z-index: 10;
+}
+
+input[type='checkbox']{
+    position: absolute;
+    opacity: 0;
+}
+
+input[type='checkbox']:checked + .switch-label .sliding-color{
+    transform: translateX(100%);
+    transition: .2s;
+    border-radius: 0 50px 50px 0;
+}
+
+input[type='checkbox']:not(:checked) + .switch-label .sliding-color{
+    transition: .2s;
+}

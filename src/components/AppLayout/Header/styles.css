@@ -1,34 +1,20 @@
 .header{
-    padding: 1rem 0 2rem 0;
-}
-
-.header-label{
-    max-width: 100px;
-    height: 30px;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    margin-bottom: 1rem;
     display: flex;
-    border-radius: 30px;
-    border: 2px solid var(--app-border-color);
-    background-color: white;
-    box-shadow: 4px 4px var(--app-box-shadow-color);
-    position: relative;
+    justify-content: center;
 }
 
-.header-div{
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    background-color: grey;
+.header--light{
+    transition: background-color .2s, box-shadow .2s;
+    box-shadow: 0 2px 1px var(--app-box-shadow-color);
+    background-color: var(--app-border-color-dark);
 }
 
-.moon .sun{
-    z-index: 10;
+.header--dark{
+    transition: background-color .2s, box-shadow .2s;
+    box-shadow: 0 2px 1px var(--app-box-shadow-color-dark);
+    background-color:  var(--app-background-color-dark);
 }
-
-/* 
-.header-label::before{
-    content: '';
-    display: block;
-    height: 30px;
-    width: 30px;
-    background-color: blue;
-} */

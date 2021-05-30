@@ -17,33 +17,34 @@ export const useCharacters = () => {
   const getCharacters = useCallback(async () => {
     setLoading(true)
     const res = await fetch('https://rickandmortyapi.com/api/character?')
-    const data = await res.json()
-    const nextPageUrl = data.info.next
-    const prevPageUrl = data.info.prev
-    setCharacters(data.results)
+    const {
+      results,
+      info: { next, prev }
+    } = await res.json()
     setPages({
       ...pages,
-      nextPageUrl,
-      prevPageUrl
+      nextPageUrl: next,
+      prevPageUrl: prev
     })
+    setCharacters(results)
     setLoading(false)
-  }, [])
+  }, [pages, setCharacters, setLoading, setPages])
 
   const getNextPage = useCallback(async () => {
-    console.log(pages.nextPageUrl)
-    /*  setLoadingNextPage(true)
+    setLoadingNextPage(true)
     const res = await fetch(pages.nextPageUrl)
-    const data = await res.json()
-    setCharacters(prev => prev.concat(data.results))
-    const nextPageUrl = data.info.next
-    const prevPageUrl = data.info.prev
+    const {
+      results,
+      info: { next, prev }
+    } = await res.json()
     setPages({
-      currentPage,
-      nextPageUrl,
-      prevPageUrl
+      ...pages,
+      nextPageUrl: next,
+      prevPageUrl: prev
     })
-    setLoadingNextPage(false) */
-  }, [])
+    setCharacters(prev => prev.concat(results))
+    setLoadingNextPage(false)
+  }, [pages, setCharacters, setLoadingNextPage, setPages])
 
   useEffect(() => {
     if (characters.length) return
@@ -54,7 +55,7 @@ export const useCharacters = () => {
     if (pages.currentPage === 0) return
     if (!pages.nextPageUrl) return
     getNextPage()
-  }, [])
+  }, [pages.currentPage])
 
   return {
     characters,

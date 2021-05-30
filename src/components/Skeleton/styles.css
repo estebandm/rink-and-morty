@@ -1,0 +1,14 @@
+.skeleton{
+    height: 290px;
+    width: 286px;
+    max-height: 350px;
+    border-radius: 8px;
+}
+
+.skeleton--light{
+    background-color: var(--app-background-color-skeleton--light);
+}
+
+.skeleton--dark{
+    background-color: var(--app-background-color-skeleton--dark);
+}

@@ -1,13 +1,13 @@
 import React from 'react'
 
 import useCharacters from 'hooks/useCharacters'
-import Card from 'components/Card'
+import CardList from 'components/Card/CardList'
 
 export const Home = () => {
   const { characters } = useCharacters()
   return (
     <main>
-      <Card characters={characters}/>
+      <CardList characters={characters}/>
     </main>
   )
 }

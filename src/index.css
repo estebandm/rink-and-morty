@@ -1,9 +1,18 @@
 :root{
     --app-box-shadow-color: #d2effd;
+    --app-box-shadow-color-dark: #1e3052;
     --app-border-color: #000;
+    --app-border-color-dark: #fff;
     --app-background-color: #fefefe;
-    --app-background: radial-gradient(#ffccf6  1px,transparent 0),radial-gradient(#ffccf6  1px,#fefefe 0);
+    --app-background-color-skeleton--light: #d2effd;
+    --app-background-color-skeleton--dark: #1e3052;
+    --app-background-color-dark: #111;
+    --app-background: radial-gradient(#cdd0ff   1px,transparent 0),radial-gradient(#cdd0ff   1px,#fefefe 0);
+    --app-background-dark: radial-gradient(#1e3052 1px,transparent 0),radial-gradient(#1e3052 1px,#111 0);
     --text-base-color: #000;
+    --blue: #2c7cdc;
+    --lightViolet: #cdd0ff;
+    --app-border-details: #3d5a87;
 }
 body{
     margin: 0;
@@ -13,6 +22,11 @@ body{
     background-size: 40px 40px;
     background-position: 0 0,20px 20px;
     color: var(--text-base-color);
+}
+
+body.dark{
+    background-image: var(--app-background-dark);
+    background-color: var(--app-background-color-dark);
 }
 
 div{

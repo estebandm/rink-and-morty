@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function useNearScreen ({ distance = '300px', viewfinderRef, once = true } = {}) {
   const [isNearScreen, setShow] = useState(false)

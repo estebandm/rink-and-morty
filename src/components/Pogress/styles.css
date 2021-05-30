@@ -1,0 +1,95 @@
+.loader,
+.loader:before,
+.loader:after{
+    border-radius: 50%;
+}
+
+.loader{
+    font-size: 11px;
+    position: relative;
+    width: 10em;
+    height: 10em;
+    box-shadow: inset 0 0 0 .5rem;
+    color: var(--blue);
+}
+
+
+.loader-mobile{
+    width: 5em;
+    height: 5em;
+}
+
+
+.loader--dark{
+    color: var(--app-border-color-dark);
+}
+
+.loader--light{
+    color: var(--blue);
+}
+
+.loader:before,
+.loader:after{
+    content: '';
+    width: 5.3em;
+    height: 10.2em;
+    position: absolute;
+    animation: rotate 1.1s infinite ease;
+    top: -0.1em;
+}
+
+.loader:before{
+    background-color: var(--app-background-color);
+    border-radius: 10.2em 0 0 10.2em;
+    left: -0.2em;
+    transform-origin: 5.2em 5.1em;
+    animation-delay: .8s;
+}
+
+
+
+.loader:after{
+    background-color: var(--app-background-color);
+    border-radius: 0 10.2em 10.2em 0;
+    left: 4.9em;
+    transform-origin: 0.1em 5.1em;
+}
+
+
+.loader-mobile:before,
+.loader-mobile:after{
+    content: '';
+    width: 2.85em;
+    height: 5.2em;
+    position: absolute;
+    animation: rotate 1.1s infinite ease;
+    top: -0.05em;
+}
+
+.loader-mobile:before{
+    background-color: var(--app-background-color);
+    border-radius: 5.2em 0 0 5.2em;
+    left: -0.3em;
+    transform-origin: 2.8em 2.55em;
+    animation-delay: .8s;
+}
+.loader-mobile:after{
+    background-color: var(--app-background-color);
+    border-radius: 0 5.5em 5.5em 0;
+    left: 2.45em;
+    transform-origin: 0.05em 2.45em;
+}
+
+.loader--dark:before,
+.loader--dark:after{
+    background-color: var(--app-background-color-dark);
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg)
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

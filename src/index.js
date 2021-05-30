@@ -4,15 +4,15 @@ import Routes from 'routes'
 
 import 'index.css'
 import CharactersContext from 'context/CharactersContext'
-import Header from 'components/AppLayout/Header'
+import SchemeColorContext from 'context/SchemeColorContext'
 
 ReactDOM.render(
   <React.StrictMode>
-    <CharactersContext.Provider>
-      <Header>
+    <SchemeColorContext.Provider>
+      <CharactersContext.Provider>
         <Routes />
-      </Header>
-    </CharactersContext.Provider>
+      </CharactersContext.Provider>
+    </SchemeColorContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 )
